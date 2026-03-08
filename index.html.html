@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<title>SNEHAL 🌸 — The Meaning of Her</title>
+<meta property="og:title" content="SNEHAL 🌸 — The Meaning of Her"/>
+<meta property="og:description" content="Six letters. Six truths. One beautiful soul."/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,500&family=Cinzel:wght@400;500;700&family=Dancing+Script:wght@500;600;700&family=Tenor+Sans:wght@400&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+
+:root{
+  --void: #020108;
+  --gold: #f0d080;
+  --gold2: #c8a040;
+  --rose: #f090b0;
+  --lavender: #c8b8f8;
+  --blush: #fce8f0;
+  --mint: #b8f0d8;
+  --sky: #a8d8f8;
+  --white: #fefaff;
+  --dim: rgba(255,255,255,0.6);
+}
+
+html,body{
+  width:100%;height:100%;overflow:hidden;
+  background:var(--void);
+  font-family:'Cormorant Garamond',serif;
+  color:var(--white);
+  cursor:none;
+}
+
+/* ══════════════════════════════
+   CUSTOM CURSOR
+══════════════════════════════ */
+#cursor{
+  position:fixed;z-index:9999;pointer-events:none;
+  width:12px;height:12px;border-radius:50%;
+  background:rgba(255,255,255,0.9);
+  box-shadow:0 0 16px rgba(255,255,255,0.8);
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s ease, width 0.2s, height 0.2s;
+  mix-blend-mode:screen;
+}
+#cursor-ring{
+  position:fixed;z-index:9998;pointer-events:none;
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.25);
+  transform:translate(-50%,-50%);
+  transition:transform 0.18s ease, width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+/* ══════════════════════════════
+   STARFIELD
+══════════════════════════════ */
+#starfield{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.bg-star{position:absolute;border-radius:50%;background:white;pointer-events:none;animation:twinkle ease-in-out infinite;}
+@keyframes twinkle{0%,100%{opacity:var(--o);transform:scale(1);}50%{opacity:calc(var(--o)*3.5);transform:scale(1.8);}}
+.shoot{
+  position:absolute;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.95),rgba(255,255,255,0.4),transparent);
+  pointer-events:none;animation:shootAnim linear forwards;opacity:0;border-radius:2px;
+}
+@keyframes shootAnim{0%{opacity:0;transform:translateX(0) scaleX(0);}5%{opacity:1;transform:scaleX(1);}90%{opacity:0.6;}100%{opacity:0;transform:translateX(350px);}}
+
+/* ambient dust */
+.dust{position:fixed;border-radius:50%;pointer-events:none;animation:dustDrift ease-in-out infinite;opacity:0;}
+@keyframes dustDrift{0%,100%{opacity:0;transform:translateY(0) translateX(0);}20%{opacity:var(--do);}80%{opacity:var(--do);}50%{transform:translateY(-30px) translateX(15px);}}
+
+/* ══════════════════════════════
+   OPENING SCREEN
+══════════════════════════════ */
+#opening{
+  position:fixed;inset:0;z-index:500;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:0;padding:36px 28px;text-align:center;
+  transition:opacity 1.4s cubic-bezier(0.4,0,0.2,1);
+  overflow:hidden;
+}
+/* layered warm background — light pink top, deep violet bottom */
+#opening::before{
+  content:'';position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 160% 80% at 50% -10%, rgba(255,200,220,0.55) 0%, transparent 55%),
+    radial-gradient(ellipse 120% 60% at 80% 110%, rgba(200,170,255,0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 50% at 15% 90%,  rgba(255,180,200,0.2) 0%, transparent 50%),
+    linear-gradient(170deg, #1a0830 0%, #0d0520 50%, #060112 100%);
+}
+/* soft radial light beam */
+#opening::after{
+  content:'';position:absolute;
+  width:260px;height:260px;border-radius:50%;
+  top:0;left:50%;transform:translateX(-50%) translateY(-50%);
+  background:radial-gradient(circle, rgba(255,180,210,0.18) 0%, transparent 70%);
+  z-index:-1;
+  animation:beamPulse 4s ease-in-out infinite;
+}
+@keyframes beamPulse{0%,100%{transform:translateX(-50%) translateY(-50%) scale(1);}50%{transform:translateX(-50%) translateY(-50%) scale(1.3);opacity:0.6;}}
+
+#opening.out{opacity:0;pointer-events:none;}
+
+/* floating heart at top */
+.op-heart-wrap{
+  margin-bottom:18px;
+  animation:riseIn 0.8s 0.1s both;
+}
+.op-heart{
+  font-size:clamp(42px,10vw,58px);
+  display:block;
+  filter:drop-shadow(0 0 20px rgba(255,100,150,0.7)) drop-shadow(0 0 40px rgba(255,100,150,0.3));
+  animation:heartBeat 1.8s ease-in-out infinite;
+}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1);}
+  14%{transform:scale(1.18);}
+  28%{transform:scale(1);}
+  42%{transform:scale(1.1);}
+  56%{transform:scale(1);}
+}
+
+/* from tag */
+.op-from{
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;
+  color:var(--rose);opacity:0.7;
+  margin-bottom:14px;
+  animation:riseIn 0.8s 0.25s both;
+}
+
+/* main heading */
+.op-heading{
+  font-family:'Cormorant Garamond',serif;font-weight:300;
+  font-size:clamp(13px,3.8vw,18px);
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:6px;
+  animation:riseIn 0.8s 0.4s both;
+}
+.op-name{
+  font-family:'Dancing Script',cursive;font-weight:700;
+  font-size:clamp(62px,17vw,100px);
+  line-height:1.0;
+  background:linear-gradient(135deg, #ffeef6 0%, #ffb8d4 40%, #e890c8 70%, #ffcce8 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 30px rgba(255,140,190,0.6));
+  animation:riseIn 0.8s 0.55s both, nameBreath 5s 1.5s ease-in-out infinite;
+  margin-bottom:0;
+  position:relative;
+}
+@keyframes nameBreath{
+  0%,100%{filter:drop-shadow(0 0 30px rgba(255,140,190,0.6));}
+  50%{filter:drop-shadow(0 0 50px rgba(255,140,190,1)) drop-shadow(0 0 80px rgba(200,160,255,0.4));}
+}
+
+/* divider */
+.op-divider{
+  display:flex;align-items:center;gap:10px;
+  width:min(200px,60vw);
+  margin:16px auto;
+  animation:riseIn 0.8s 0.7s both;
+}
+.op-divider::before,.op-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,180,210,0.4),transparent);}
+.op-divider-dot{color:var(--rose);font-size:13px;opacity:0.6;}
+
+/* personal note card — the KEY element */
+.op-note{
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,180,210,0.15);
+  border-radius:20px;
+  padding:20px 24px;
+  max-width:min(340px,88vw);
+  backdrop-filter:blur(10px);
+  box-shadow:0 8px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.07);
+  animation:riseIn 0.8s 0.85s both;
+  position:relative;
+  margin-bottom:4px;
+}
+/* quote mark */
+.op-note::before{
+  content:'\201C';
+  position:absolute;top:-4px;left:16px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;line-height:1;
+  color:var(--rose);opacity:0.3;
+}
+.op-note-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(15px,4vw,18px);
+  line-height:1.85;
+  color:rgba(255,255,255,0.78);
+}
+.op-note-text strong{color:var(--rose);font-style:normal;opacity:0.9;}
+/* signature line */
+.op-note-sig{
+  display:flex;align-items:center;justify-content:flex-end;gap:6px;
+  margin-top:12px;padding-top:10px;
+  border-top:1px solid rgba(255,255,255,0.07);
+}
+.op-note-sig-line{
+  font-family:'Dancing Script',cursive;font-size:16px;
+  color:var(--rose);opacity:0.7;
+}
+.op-note-sig-heart{font-size:13px;animation:heartBeat 1.8s ease-in-out infinite;}
+
+/* SNEHAL letters strip */
+.op-letters{
+  display:flex;gap:clamp(6px,2vw,14px);
+  animation:riseIn 0.8s 1.05s both;
+  margin-bottom:4px;
+}
+.op-l{
+  font-family:'Cinzel',serif;font-size:clamp(14px,4vw,20px);font-weight:700;
+  color:transparent;
+  background:linear-gradient(135deg,rgba(255,200,220,0.9),rgba(200,160,255,0.7));
+  -webkit-background-clip:text;background-clip:text;
+  opacity:0.45;
+  animation:letterPop 0.5s var(--ld) both;
+}
+@keyframes letterPop{from{opacity:0;transform:translateY(10px) scale(0.8);}to{opacity:0.45;transform:translateY(0) scale(1);}}
+
+/* CTA button */
+.op-btn-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  animation:riseIn 0.8s 1.25s both;
+}
+.op-btn{
+  padding:15px 48px;
+  background:linear-gradient(135deg, rgba(255,120,170,0.25), rgba(200,140,255,0.2));
+  border:1px solid rgba(255,140,185,0.45);
+  color:var(--blush);
+  font-family:'Cinzel',serif;font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  border-radius:50px;cursor:none;
+  transition:all 0.4s ease;
+  position:relative;overflow:hidden;
+  box-shadow:0 4px 24px rgba(255,100,150,0.15);
+}
+.op-btn::before{
+  content:'';position:absolute;inset:0;border-radius:50px;
+  background:linear-gradient(135deg,rgba(255,150,190,0.15),rgba(200,150,255,0.12));
+  opacity:0;transition:opacity 0.3s;
+}
+.op-btn:hover::before{opacity:1;}
+.op-btn:hover{
+  border-color:rgba(255,140,185,0.8);
+  box-shadow:0 0 30px rgba(255,100,150,0.35),0 0 60px rgba(255,100,150,0.1);
+  transform:translateY(-2px);
+}
+.op-btn-hint{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(12px,3vw,14px);color:rgba(255,255,255,0.22);
+  letter-spacing:1px;
+}
+
+@keyframes riseIn{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+
+/* ══════════════════════════════
+   SLIDER
+══════════════════════════════ */
+#slider-wrap{position:fixed;inset:0;z-index:1;display:none;overflow:hidden;}
+#track{
+  display:flex;width:600vw;height:100%;
+  transition:transform 1s cubic-bezier(0.87,0,0.13,1);
+  will-change:transform;
+}
+
+/* ══════════════════════════════
+   CARD
+══════════════════════════════ */
+.card{
+  width:100vw;height:100%;
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;flex-shrink:0;
+  padding:60px 20px 80px;
+}
+
+/* rich per-card backgrounds */
+.card[data-i="0"]{background:radial-gradient(ellipse 140% 100% at 25% 35%, #3a0825 0%, #1a0418 40%, var(--void) 100%);}
+.card[data-i="1"]{background:radial-gradient(ellipse 140% 100% at 75% 65%, #061428 0%, #030c1a 40%, var(--void) 100%);}
+.card[data-i="2"]{background:radial-gradient(ellipse 140% 100% at 35% 25%, #1a0838 0%, #0c0420 40%, var(--void) 100%);}
+.card[data-i="3"]{background:radial-gradient(ellipse 140% 100% at 65% 75%, #251808 0%, #180e04 40%, var(--void) 100%);}
+.card[data-i="4"]{background:radial-gradient(ellipse 140% 100% at 20% 70%, #061c10 0%, #031208 40%, var(--void) 100%);}
+.card[data-i="5"]{background:radial-gradient(ellipse 140% 100% at 80% 30%, #300820 0%, #1c0414 40%, var(--void) 100%);}
+
+/* large soft glow behind everything */
+.card-aura{
+  position:absolute;
+  width:min(500px,110vw);height:min(500px,110vw);
+  border-radius:50%;
+  pointer-events:none;
+  filter:blur(100px);
+  opacity:0.1;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  animation:auraPulse 5s ease-in-out infinite;
+}
+@keyframes auraPulse{
+  0%,100%{transform:translate(-50%,-50%) scale(1);opacity:0.1;}
+  50%{transform:translate(-50%,-50%) scale(1.2);opacity:0.18;}
+}
+
+/* secondary accent blob */
+.card-aura2{
+  position:absolute;
+  width:min(250px,60vw);height:min(250px,60vw);
+  border-radius:50%;pointer-events:none;
+  filter:blur(60px);opacity:0.08;
+  top:20%;left:70%;
+  animation:aura2 7s 1s ease-in-out infinite alternate;
+}
+@keyframes aura2{from{transform:translate(0,0) scale(1);}to{transform:translate(-40px,30px) scale(1.1);}}
+
+/* ══════════════════════════════
+   CARD INNER
+══════════════════════════════ */
+.card-inner{
+  position:relative;z-index:2;
+  width:min(380px,92vw);
+  display:flex;flex-direction:column;align-items:center;
+  opacity:0;
+  transform:translateY(40px) scale(0.94);
+  transition:opacity 0.8s cubic-bezier(0.34,1.3,0.64,1), transform 0.8s cubic-bezier(0.34,1.3,0.64,1);
+}
+.card-inner.visible{opacity:1;transform:translateY(0) scale(1);}
+
+/* ornamental top */
+.card-ornament{
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:6px;text-transform:uppercase;
+  color:var(--lc);opacity:0.5;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+}
+.card-ornament::before,.card-ornament::after{
+  content:'';width:24px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--lc));
+}
+.card-ornament::after{background:linear-gradient(90deg,var(--lc),transparent);}
+
+/* THE LETTER — shown only in top-bar now, hidden on card */
+.card-letter{ display:none; }
+
+/* word — now the hero of each card */
+.card-word{
+  font-family:'Dancing Script',cursive;font-weight:600;
+  font-size:clamp(36px,9vw,56px);
+  color:transparent;
+  background:linear-gradient(135deg, white 0%, var(--lc) 60%, white 100%);
+  background-size:200% 200%;
+  -webkit-background-clip:text;background-clip:text;
+  text-align:center;
+  margin-bottom:4px;
+  animation:wordShimmer 4s ease-in-out infinite;
+  text-shadow:none;
+}
+@keyframes wordShimmer{
+  0%,100%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+}
+
+/* letter badge — small glowing pill instead of giant letter */
+.card-letter-badge{
+  font-family:'Cinzel',serif;font-weight:700;
+  font-size:clamp(13px,3.5vw,18px);
+  letter-spacing:4px;
+  color:var(--lc);
+  text-shadow:0 0 20px var(--lc), 0 0 40px var(--lc);
+  margin-bottom:10px;
+  opacity:0.8;
+}
+
+/* ornament line */
+.card-line{
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:16px;width:min(220px,70vw);
+}
+.card-line::before,.card-line::after{content:'';flex:1;height:1px;}
+.card-line::before{background:linear-gradient(90deg,transparent,var(--lc));}
+.card-line::after{background:linear-gradient(90deg,var(--lc),transparent);}
+.card-line-gem{width:5px;height:5px;border-radius:50%;background:var(--lc);box-shadow:0 0 8px var(--lc);}
+
+/* photo box — glass morphism — BIGGER */
+.card-photo-box{
+  width:min(300px,82vw);
+  aspect-ratio:3/4;
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  margin-bottom:20px;
+  cursor:none;
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+  box-shadow:0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+  transition:border-color 0.4s, box-shadow 0.4s, transform 0.3s;
+}
+.card-photo-box:hover{
+  border-color:rgba(255,255,255,0.2);
+  box-shadow:0 12px 50px rgba(0,0,0,0.5), 0 0 30px var(--lc2), inset 0 1px 0 rgba(255,255,255,0.1);
+  transform:scale(1.02);
+}
+.card-photo-box img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  position:absolute;inset:0;
+  animation:photoReveal 0.6s ease both;
+}
+@keyframes photoReveal{from{transform:scale(1.1);opacity:0;}to{transform:scale(1);opacity:1;}}
+
+.ph-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+  background:rgba(0,0,0,0.2);
+}
+.ph-ico{font-size:30px;opacity:0.3;}
+.ph-txt{
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--white);opacity:0.25;
+}
+.ph-hint{
+  position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:2px;
+  color:var(--lc);opacity:0;text-transform:uppercase;white-space:nowrap;
+  transition:opacity 0.3s;
+}
+.card-photo-box:hover .ph-hint{opacity:0.6;}
+.card-photo-box.has-photo .ph-overlay{opacity:0;}
+.card-photo-box.has-photo:hover .ph-overlay{opacity:1;background:rgba(0,0,0,0.45);}
+.card-photo-box.has-photo:hover .ph-hint{opacity:0.8;}
+
+/* quote */
+.card-quote{
+  font-style:italic;
+  font-size:clamp(14px,3.8vw,17px);
+  line-height:1.9;
+  color:rgba(255,255,255,0.72);
+  text-align:center;
+  max-width:310px;
+  position:relative;padding:0 4px;
+}
+.card-quote::before{
+  content:'\201C';color:var(--lc);font-size:2em;line-height:0;
+  vertical-align:-0.4em;margin-right:4px;opacity:0.8;
+}
+.card-quote::after{
+  content:'\201D';color:var(--lc);font-size:2em;line-height:0;
+  vertical-align:-0.4em;margin-left:4px;opacity:0.8;
+}
+
+/* bottom tag */
+.card-tag{
+  margin-top:16px;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 18px;border-radius:20px;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--lc);opacity:0.7;
+}
+
+/* ══════════════════════════════
+   TOP BAR
+══════════════════════════════ */
+#top-bar{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:none;justify-content:center;align-items:center;
+  padding:18px 16px 0;gap:clamp(4px,2.5vw,20px);
+  background:linear-gradient(to bottom,rgba(2,1,8,0.6),transparent);
+  backdrop-filter:blur(2px);
+}
+.top-ltr{
+  font-family:'Cinzel',serif;font-size:clamp(13px,3.5vw,18px);font-weight:700;
+  color:rgba(255,255,255,0.18);
+  letter-spacing:2px;transition:all 0.5s ease;cursor:none;
+  padding:5px 10px;position:relative;
+}
+.top-ltr::after{
+  content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:0;height:1px;background:var(--tc,white);
+  transition:width 0.4s ease;opacity:0.6;
+}
+.top-ltr.active{color:var(--tc);text-shadow:0 0 20px var(--tc),0 0 40px var(--tc);transform:scale(1.2);}
+.top-ltr.active::after{width:80%;}
+.top-ltr.visited{color:rgba(255,255,255,0.38);}
+
+/* ══════════════════════════════
+   NAV ARROWS
+══════════════════════════════ */
+.nav-arrow{
+  position:fixed;top:50%;z-index:50;transform:translateY(-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;
+  cursor:none;transition:all 0.3s;font-size:20px;
+  color:rgba(255,255,255,0.3);
+}
+.nav-arrow:hover{background:rgba(255,255,255,0.1);color:white;border-color:rgba(255,255,255,0.25);box-shadow:0 0 20px rgba(255,255,255,0.1);}
+#nav-prev{left:12px;}
+#nav-next{right:12px;}
+
+/* ══════════════════════════════
+   DOTS
+══════════════════════════════ */
+#dots{
+  position:fixed;bottom:24px;left:50%;transform:translateX(-50%);
+  z-index:50;display:none;gap:8px;align-items:center;
+}
+.dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,0.15);
+  transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1);cursor:none;
+}
+.dot.active{width:28px;border-radius:3px;background:var(--ac,white);box-shadow:0 0 10px var(--ac,white),0 0 20px var(--ac,white);}
+
+/* ══════════════════════════════
+   SWIPE HINT
+══════════════════════════════ */
+#swipe-hint{
+  position:fixed;bottom:52px;left:50%;transform:translateX(-50%);
+  z-index:50;display:none;
+  flex-direction:row;align-items:center;gap:10px;
+  font-family:'Tenor Sans',sans-serif;font-size:10px;letter-spacing:4px;text-transform:uppercase;
+  color:var(--white);opacity:0.25;white-space:nowrap;
+  transition:opacity 1s ease;
+  animation:hintPulse 2s ease-in-out infinite;
+}
+@keyframes hintPulse{0%,100%{opacity:0.25;}50%{opacity:0.12;}}
+.hint-arr{animation:arrBounce 1.5s ease-in-out infinite;font-size:14px;}
+@keyframes arrBounce{0%,100%{transform:translateX(0);}50%{transform:translateX(7px);}}
+
+/* ══════════════════════════════
+   TRANSITION OVERLAY
+══════════════════════════════ */
+#trans-overlay{position:fixed;inset:0;z-index:300;pointer-events:none;opacity:0;}
+.trans-ripple{
+  position:absolute;top:50%;left:50%;
+  width:0;height:0;border-radius:50%;transform:translate(-50%,-50%);
+  animation:rippleOut 1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+@keyframes rippleOut{0%{width:0;height:0;opacity:0.5;}60%{opacity:0.25;}100%{width:350vmax;height:350vmax;opacity:0;}}
+
+/* ══════════════════════════════
+   FLOATING PETALS
+══════════════════════════════ */
+.fpetal{
+  position:fixed;pointer-events:none;z-index:150;
+  animation:petalFall linear forwards;
+}
+@keyframes petalFall{
+  0%{transform:translateY(-20px) rotate(0deg) scale(0) translateX(0);opacity:1;}
+  30%{transform:translateY(30vh) rotate(180deg) scale(1) translateX(20px);opacity:0.9;}
+  70%{transform:translateY(70vh) rotate(420deg) scale(0.8) translateX(-15px);opacity:0.5;}
+  100%{transform:translateY(115vh) rotate(720deg) scale(0.5) translateX(10px);opacity:0;}
+}
+
+/* sparkle burst */
+.spark{
+  position:fixed;pointer-events:none;z-index:200;
+  font-size:12px;
+  animation:sparkBurst 0.8s ease-out forwards;
+}
+@keyframes sparkBurst{
+  0%{transform:translate(-50%,-50%) scale(0) rotate(0deg);opacity:1;}
+  100%{transform:translate(calc(-50% + var(--sx)),calc(-50% + var(--sy))) scale(1) rotate(var(--sr));opacity:0;}
+}
+
+/* ══════════════════════════════
+   FINALE
+══════════════════════════════ */
+#finale{
+  position:fixed;inset:0;z-index:600;
+  display:none;flex-direction:column;align-items:center;justify-content:center;
+  padding:32px;text-align:center;gap:0;
+}
+#finale::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 100% 80% at 50% 40%, rgba(240,144,176,0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 60% at 20% 80%, rgba(200,184,248,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 60% at 80% 20%, rgba(240,208,128,0.07) 0%, transparent 50%),
+    linear-gradient(180deg,#020110,#08031a);
+  z-index:0;
+}
+#finale.show{display:flex;}
+#const-canvas{position:absolute;inset:0;z-index:1;pointer-events:none;}
+
+.fin-content{
+  position:relative;z-index:2;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  opacity:0;
+  animation:grandReveal 1.5s 2.2s cubic-bezier(0.34,1.2,0.64,1) both;
+}
+@keyframes grandReveal{from{opacity:0;transform:translateY(40px) scale(0.95);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+.fin-eyebrow{
+  font-family:'Tenor Sans',sans-serif;font-size:9px;letter-spacing:7px;text-transform:uppercase;
+  color:var(--gold);opacity:0.55;
+}
+.fin-title{
+  font-family:'Dancing Script',cursive;font-weight:700;
+  font-size:clamp(52px,14vw,86px);
+  color:var(--white);line-height:1.1;
+  text-shadow:0 0 60px rgba(240,144,176,0.6),0 0 120px rgba(200,184,248,0.3),0 0 200px rgba(240,208,128,0.2);
+  animation:nameSway 5s ease-in-out infinite;
+}
+@keyframes nameSway{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+.fin-divider{
+  display:flex;align-items:center;gap:12px;width:min(260px,75vw);
+}
+.fin-divider::before,.fin-divider::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(240,208,128,0.4),transparent);}
+.fin-divider-icon{font-size:16px;animation:heartbeat 1.5s ease-in-out infinite;}
+@keyframes heartbeat{0%,100%{transform:scale(1);}30%{transform:scale(1.2);}60%{transform:scale(0.95);}}
+
+.fin-letters-row{
+  font-family:'Cinzel',serif;font-size:clamp(11px,3vw,14px);
+  letter-spacing:clamp(6px,2.5vw,18px);
+  color:var(--lavender);opacity:0.65;
+}
+
+.fin-poem{
+  font-style:italic;font-size:clamp(16px,4.5vw,21px);
+  color:var(--blush);line-height:2.1;opacity:0.9;max-width:380px;
+}
+.fin-poem strong{
+  color:var(--gold);font-style:normal;
+  text-shadow:0 0 20px rgba(240,208,128,0.5);
+}
+
+.fin-message{
+  font-style:italic;font-size:clamp(14px,3.5vw,17px);
+  color:rgba(255,255,255,0.55);max-width:340px;line-height:1.8;
+}
+
+.fin-date{
+  font-family:'Dancing Script',cursive;font-size:clamp(20px,5vw,26px);
+  color:var(--rose);
+  text-shadow:0 0 20px rgba(240,144,176,0.5);
+}
+.fin-hearts{
+  font-size:24px;letter-spacing:10px;
+  animation:heartsFloat 2s ease-in-out infinite;
+}
+@keyframes heartsFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+/* share nudge */
+.fin-share{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  margin-top:4px;opacity:0;
+  animation:riseIn 1s 4s both;
+}
+.fin-share-label{
+  font-family:'Dancing Script',cursive;font-size:clamp(16px,4vw,20px);
+  color:var(--rose);opacity:0.75;
+}
+
+#file-input{display:none;}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- STARFIELD -->
+<div id="starfield"></div>
+
+<!-- OPENING -->
+<div id="opening">
+
+  <!-- floating heart -->
+  <div class="op-heart-wrap">
+    <span class="op-heart">🩷</span>
+  </div>
+
+  <!-- from label -->
+  <p class="op-from">✦ &nbsp; A special tribute &nbsp; ✦</p>
+
+  <!-- her name -->
+  <p class="op-heading">Dear Sister,</p>
+  <h1 class="op-name">Snehal</h1>
+
+  <!-- divider -->
+  <div class="op-divider"><span class="op-divider-dot">🌸</span></div>
+
+  <!-- personal note from brother -->
+  <div class="op-note">
+    <p class="op-note-text">
+      You have always been the <strong>strongest</strong> person in my life —
+      even when you didn't know it.<br/><br/>
+      This is my small way of telling the world
+      what I see in you every single day. 🌸
+    </p>
+    <div class="op-note-sig">
+      <span class="op-note-sig-line">— your brother</span>
+      <span class="op-note-sig-heart">🤍</span>
+    </div>
+  </div>
+
+  <!-- letters row -->
+  <div class="op-letters">
+    <span class="op-l" style="--ld:1.0s">S</span>
+    <span class="op-l" style="--ld:1.1s">N</span>
+    <span class="op-l" style="--ld:1.2s">E</span>
+    <span class="op-l" style="--ld:1.3s">H</span>
+    <span class="op-l" style="--ld:1.4s">A</span>
+    <span class="op-l" style="--ld:1.5s">L</span>
+  </div>
+
+  <!-- CTA -->
+  <div class="op-btn-wrap">
+    <button class="op-btn" onclick="startSlider()">Begin Her Story</button>
+    <span class="op-btn-hint">swipe through each letter ✦</span>
+  </div>
+
+</div>
+
+<!-- TOP BAR -->
+<div id="top-bar">
+  <span class="top-ltr" data-i="0" onclick="goTo(0)">S</span>
+  <span class="top-ltr" data-i="1" onclick="goTo(1)">N</span>
+  <span class="top-ltr" data-i="2" onclick="goTo(2)">E</span>
+  <span class="top-ltr" data-i="3" onclick="goTo(3)">H</span>
+  <span class="top-ltr" data-i="4" onclick="goTo(4)">A</span>
+  <span class="top-ltr" data-i="5" onclick="goTo(5)">L</span>
+</div>
+
+<!-- NAV -->
+<div class="nav-arrow" id="nav-prev" onclick="prevCard()">‹</div>
+<div class="nav-arrow" id="nav-next" onclick="nextCard()">›</div>
+
+<!-- SWIPE HINT -->
+<div id="swipe-hint"><span>swipe</span><span class="hint-arr">→</span></div>
+
+<!-- DOTS -->
+<div id="dots" style="display:flex;"></div>
+
+<!-- SLIDER -->
+<div id="slider-wrap"><div id="track"></div></div>
+
+<!-- TRANSITION OVERLAY -->
+<div id="trans-overlay"></div>
+
+<!-- FINALE -->
+<div id="finale">
+  <canvas id="const-canvas"></canvas>
+  <div class="fin-content">
+    <p class="fin-eyebrow">All six letters revealed ✦</p>
+    <h2 class="fin-title">Snehal,</h2>
+    <div class="fin-divider"><span class="fin-divider-icon">🌸</span></div>
+    <p class="fin-letters-row">S · N · E · H · A · L</p>
+    <p class="fin-poem">
+      You are <strong>Strong.</strong><br/>
+      You are <strong>Nurturing.</strong><br/>
+      You are <strong>Extraordinary.</strong><br/>
+      You are <strong>Hardworking.</strong><br/>
+      You are <strong>Admirable.</strong><br/>
+      You are <strong>Loving.</strong>
+    </p>
+    <div class="fin-divider"><span class="fin-divider-icon">✦</span></div>
+    <p class="fin-message">
+      The world is lucky to have you in it.<br/>
+      And I am the luckiest — to call you my sister.
+    </p>
+    <p class="fin-date">Happy Women's Day 🌸</p>
+    <div class="fin-hearts">🌸 💕 ✨ 💕 🌸</div>
+    <div class="fin-share">
+      <span class="fin-share-label">— with all my love, your brother 🤍</span>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="file-input" accept="image/*" onchange="handleUpload(this)"/>
+
+<script>
+// ════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════
+const DATA = [
+  {
+    letter:'S', word:'Strong',
+    color:'#f090b0', color2:'rgba(240,144,176,0.2)',
+    photo:'images/WhatsApp Image 2026-03-08 at 4.55.30 PM.jpeg',
+    tag:'✦ her quiet power',
+    quote:'Your strength is silent but unshakable. You carry dreams, responsibilities, and emotions all at once — and still, every single day, you rise. That is rare. That is you.'
+  },
+  {
+    letter:'N', word:'Nurturing',
+    color:'#90c8f0', color2:'rgba(144,200,240,0.2)',
+    photo:'images/1000225831.jpg',
+    tag:'✦ her warmth',
+    quote:'You care for people before they even realise they need it. Your presence makes everything feel softer, warmer, and a little more beautiful — just by being you.'
+  },
+  {
+    letter:'E', word:'Extraordinary',
+    color:'#c8b8f8', color2:'rgba(200,184,248,0.2)',
+    photo:'images/DSC09782.JPG',
+    tag:'✦ her destiny',
+    quote:'Not everyone sees it yet — but you are destined for extraordinary things. The path you have chosen, the life you are building, is anything but ordinary. And so are you.'
+  },
+  {
+    letter:'H', word:'Hardworking',
+    color:'#f0d080', color2:'rgba(240,208,128,0.2)',
+    photo:'images/IMG-20230908-WA0004.jpg',
+    tag:'✦ her dedication',
+    quote:'While others rest, you keep going. Late nights, heavy books, long hours — your dedication to becoming a doctor who holds life in her hands is nothing short of inspiring.'
+  },
+  {
+    letter:'A', word:'Admirable',
+    color:'#90e8b8', color2:'rgba(144,232,184,0.2)',
+    photo:'images/IMG_20220219_232152_979.jpg',
+    tag:'✦ her grace',
+    quote:'The way you pursue your dreams, the way you show up even on hard days — it makes the people around you quietly, deeply proud. You inspire without even knowing it.'
+  },
+  {
+    letter:'L', word:'Loving',
+    color:'#f8b8d8', color2:'rgba(248,184,216,0.2)',
+    photo:'images/IMG_20240401_125824.jpg',
+    tag:'✦ her heart',
+    quote:'Behind all the ambition and strength lives a heart overflowing with love, empathy, and care. You feel everything deeply. That is not a weakness — it is your most beautiful gift.'
+  }
+];
+
+let current = 0, photos = {}, visited = new Set(), isAnimating = false, touchStartX = 0, touchStartY = 0;
+
+// ════════════════════════════════════════
+// CURSOR
+// ════════════════════════════════════════
+const cur = document.getElementById('cursor');
+const curRing = document.getElementById('cursor-ring');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove', e=>{
+  cx=e.clientX; cy=e.clientY;
+  cur.style.left=cx+'px'; cur.style.top=cy+'px';
+});
+setInterval(()=>{
+  rx+=(cx-rx)*0.12; ry+=(cy-ry)*0.12;
+  curRing.style.left=rx+'px'; curRing.style.top=ry+'px';
+},16);
+document.addEventListener('mousedown',()=>{cur.style.transform='translate(-50%,-50%) scale(0.6)';curRing.style.transform='translate(-50%,-50%) scale(0.8)';});
+document.addEventListener('mouseup',()=>{cur.style.transform='translate(-50%,-50%) scale(1)';curRing.style.transform='translate(-50%,-50%) scale(1)';});
+
+// ════════════════════════════════════════
+// STARFIELD
+// ════════════════════════════════════════
+(function(){
+  const sf=document.getElementById('starfield');
+  // stars
+  for(let i=0;i<320;i++){
+    const s=document.createElement('div'); s.className='bg-star';
+    const sz=Math.random()<0.08?(2+Math.random()*1.5):Math.random()<0.25?(0.8+Math.random()):(0.3+Math.random()*0.6);
+    const op=0.1+Math.random()*0.55;
+    s.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;--o:${op};opacity:${op};animation-duration:${2+Math.random()*6}s;animation-delay:${Math.random()*8}s;`;
+    sf.appendChild(s);
+  }
+  // dust particles
+  for(let i=0;i<40;i++){
+    const d=document.createElement('div'); d.className='dust';
+    const sz=0.8+Math.random()*1.5;
+    const col=['rgba(240,144,176','rgba(200,184,248','rgba(240,208,128','rgba(144,200,240'][Math.floor(Math.random()*4)];
+    const op=0.1+Math.random()*0.25;
+    d.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;top:${Math.random()*100}%;background:${col},${op});--do:${op};animation-duration:${6+Math.random()*8}s;animation-delay:${Math.random()*8}s;`;
+    sf.appendChild(d);
+  }
+  // shooting stars
+  function shoot(){
+    const s=document.createElement('div'); s.className='shoot';
+    const len=60+Math.random()*160;
+    s.style.cssText=`width:${len}px;top:${3+Math.random()*50}%;left:${Math.random()*55}%;transform:rotate(${-8-Math.random()*22}deg);animation-duration:${0.9+Math.random()*0.9}s;animation-delay:${Math.random()*0.15}s;`;
+    sf.appendChild(s); setTimeout(()=>s.remove(),2500);
+    setTimeout(shoot,5000+Math.random()*9000);
+  }
+  setTimeout(shoot,2000); setTimeout(shoot,5000);
+})();
+
+// ════════════════════════════════════════
+// BUILD CARDS
+// ════════════════════════════════════════
+function buildCards(){
+  const track=document.getElementById('track');
+  DATA.forEach((d,i)=>{
+    const card=document.createElement('div');
+    card.className='card'; card.dataset.i=i;
+    card.innerHTML=`
+      <div class="card-aura" style="background:${d.color};"></div>
+      <div class="card-aura2" style="background:${d.color};"></div>
+      <div class="card-inner" id="ci-${i}" style="--lc:${d.color};--lc2:${d.color2};">
+        <div class="card-ornament">Letter ${i+1} of 6</div>
+        <div class="card-letter-badge">${d.letter} &nbsp;Â·&nbsp; ${d.word.toUpperCase()}</div>
+        <div class="card-word">${d.word}</div>
+        <div class="card-line"><div class="card-line-gem" style="background:${d.color};box-shadow:0 0 8px ${d.color};"></div></div>
+        <div class="card-photo-box ${d.photo ? 'has-photo' : ''}" id="pb-${i}" onclick="triggerUpload(${i})" style="--lc:${d.color};--lc2:${d.color2};">
+          ${d.photo ? `<img src="${d.photo}" alt="${d.word} photo">` : ''}
+          <div class="ph-overlay">
+            <span class="ph-ico">📸</span>
+            <span class="ph-txt">Tap to add her photo</span>
+          </div>
+          <span class="ph-hint">✦ tap to change photo</span>
+        </div>
+        <p class="card-quote" style="--lc:${d.color};">${d.quote}</p>
+        <span class="card-tag" style="color:${d.color};">${d.tag}</span>
+      </div>
+    `;
+    track.appendChild(card);
+  });
+}
+
+// ════════════════════════════════════════
+// DOTS
+// ════════════════════════════════════════
+function buildDots(){
+  const wrap=document.getElementById('dots'); wrap.innerHTML='';
+  DATA.forEach((d,i)=>{
+    const dot=document.createElement('div');
+    dot.className='dot'+(i===current?' active':'');
+    dot.style.setProperty('--ac',d.color);
+    dot.onclick=()=>goTo(i);
+    wrap.appendChild(dot);
+  });
+}
+
+// ════════════════════════════════════════
+// START
+// ════════════════════════════════════════
+function startSlider(){
+  document.getElementById('opening').classList.add('out');
+  setTimeout(()=>{
+    document.getElementById('opening').style.display='none';
+    document.getElementById('slider-wrap').style.display='block';
+    document.getElementById('top-bar').style.display='flex';
+    document.getElementById('nav-next').style.display='flex';
+    document.getElementById('swipe-hint').style.display='flex';
+    document.getElementById('dots').style.display='flex';
+    buildCards(); buildDots();
+    showCard(0,false); setupSwipe();
+    setTimeout(()=>{ document.getElementById('swipe-hint').style.opacity='0'; },5000);
+  },1400);
+}
+
+// ════════════════════════════════════════
+// SHOW CARD
+// ════════════════════════════════════════
+function showCard(idx, anim){
+  document.getElementById('track').style.transform=`translateX(-${idx*100}vw)`;
+
+  // top bar
+  document.querySelectorAll('.top-ltr').forEach((el,i)=>{
+    el.classList.remove('active','visited');
+    el.style.removeProperty('--tc');
+    if(i===idx){el.classList.add('active');el.style.setProperty('--tc',DATA[i].color);}
+    else if(visited.has(i)) el.classList.add('visited');
+  });
+
+  // dots
+  document.querySelectorAll('.dot').forEach((d,i)=>{
+    d.classList.toggle('active',i===idx);
+    d.style.setProperty('--ac',DATA[i].color);
+  });
+
+  // nav
+  document.getElementById('nav-prev').style.display=idx>0?'flex':'none';
+  document.getElementById('nav-next').style.display=idx<DATA.length-1?'flex':'none';
+
+  // animate in
+  setTimeout(()=>{
+    const ci=document.getElementById(`ci-${idx}`);
+    if(ci){ci.classList.remove('visible');void ci.offsetWidth;ci.classList.add('visible');}
+  }, anim?420:80);
+
+  // cursor ring color
+  curRing.style.borderColor=DATA[idx].color+'55';
+
+  visited.add(idx);
+  if(anim){ spawnPetals(DATA[idx].color); sparkBurst(DATA[idx].color); }
+}
+
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
+function goTo(idx){
+  if(isAnimating||idx===current) return;
+  doTransition(idx, DATA[current].color, idx>current?1:-1);
+}
+function nextCard(){
+  if(current<DATA.length-1) goTo(current+1);
+  else showFinale();
+}
+function prevCard(){ if(current>0) goTo(current-1); }
+
+function doTransition(nextIdx, fromColor, dir){
+  isAnimating=true;
+  const ov=document.getElementById('trans-overlay');
+  const rip=document.createElement('div'); rip.className='trans-ripple';
+  rip.style.background=fromColor+'14';
+  ov.appendChild(rip); ov.style.opacity='1';
+  setTimeout(()=>{ov.style.opacity='0';rip.remove();},1000);
+  spawnTransParticles(dir, fromColor);
+  current=nextIdx;
+  showCard(nextIdx,true);
+  setTimeout(()=>{isAnimating=false;},1050);
+}
+
+// ════════════════════════════════════════
+// PARTICLES
+// ════════════════════════════════════════
+function spawnTransParticles(dir, color){
+  const e2=['✦','✧','★','✨','💫','🌸','💕','·'];
+  for(let i=0;i<16;i++){
+    const p=document.createElement('div'); p.className='fpetal';
+    p.textContent=e2[Math.floor(Math.random()*e2.length)];
+    p.style.color=color;
+    p.style.left=(dir>0?(65+Math.random()*35):(Math.random()*35))+'vw';
+    p.style.top=(10+Math.random()*75)+'vh';
+    p.style.fontSize=(8+Math.random()*16)+'px';
+    p.style.animationDuration=(0.7+Math.random()*1.2)+'s';
+    p.style.animationDelay=(Math.random()*0.25)+'s';
+    document.body.appendChild(p); setTimeout(()=>p.remove(),3000);
+  }
+}
+
+function spawnPetals(color){
+  const e2=['🌸','✿','🌺','🌷','💕','✨','💫','🌼'];
+  for(let i=0;i<20;i++){
+    const p=document.createElement('div'); p.className='fpetal';
+    p.textContent=e2[Math.floor(Math.random()*e2.length)];
+    p.style.left=Math.random()*100+'vw';
+    p.style.top='-30px';
+    p.style.fontSize=(10+Math.random()*16)+'px';
+    p.style.animationDuration=(2.5+Math.random()*3)+'s';
+    p.style.animationDelay=(Math.random()*0.8)+'s';
+    document.body.appendChild(p); setTimeout(()=>p.remove(),6000);
+  }
+}
+
+function sparkBurst(color){
+  const e2=['✦','✧','·','★'];
+  for(let i=0;i<10;i++){
+    const s=document.createElement('div'); s.className='spark';
+    s.textContent=e2[Math.floor(Math.random()*e2.length)];
+    s.style.color=color;
+    s.style.left=Math.random()*100+'vw';
+    s.style.top=Math.random()*60+'vh';
+    const ang=Math.random()*360, dist=40+Math.random()*60;
+    s.style.setProperty('--sx',Math.cos(ang*Math.PI/180)*dist+'px');
+    s.style.setProperty('--sy',Math.sin(ang*Math.PI/180)*dist+'px');
+    s.style.setProperty('--sr',Math.random()*360+'deg');
+    s.style.animationDelay=Math.random()*0.3+'s';
+    document.body.appendChild(s); setTimeout(()=>s.remove(),1200);
+  }
+}
+
+// ════════════════════════════════════════
+// SWIPE
+// ════════════════════════════════════════
+function setupSwipe(){
+  const w=document.getElementById('slider-wrap');
+  w.addEventListener('touchstart',e=>{touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;},{passive:true});
+  w.addEventListener('touchend',e=>{
+    const dx=e.changedTouches[0].clientX-touchStartX;
+    const dy=e.changedTouches[0].clientY-touchStartY;
+    if(Math.abs(dx)>Math.abs(dy)&&Math.abs(dx)>45){
+      if(dx<0) nextCard(); else prevCard();
+    }
+  },{passive:true});
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight') nextCard();
+    if(e.key==='ArrowLeft') prevCard();
+  });
+}
+
+// ════════════════════════════════════════
+// PHOTO
+// ════════════════════════════════════════
+let uploadTarget=null;
+function triggerUpload(idx){ uploadTarget=idx; document.getElementById('file-input').click(); }
+function handleUpload(input){
+  if(!input.files||!input.files[0]||uploadTarget===null) return;
+  const r=new FileReader();
+  r.onload=e=>{
+    photos[uploadTarget]=e.target.result;
+    const box=document.getElementById(`pb-${uploadTarget}`);
+    if(box){
+      let img=box.querySelector('img');
+      if(!img){img=document.createElement('img');box.appendChild(img);}
+      img.src=e.target.result;
+      box.classList.add('has-photo');
+    }
+  };
+  r.readAsDataURL(input.files[0]); input.value='';
+}
+
+// ════════════════════════════════════════
+// FINALE
+// ════════════════════════════════════════
+function showFinale(){
+  // hide slider UI
+  document.getElementById('top-bar').style.opacity='0';
+  document.getElementById('nav-prev').style.display='none';
+  document.getElementById('nav-next').style.display='none';
+  document.getElementById('dots').style.opacity='0';
+  for(let i=0;i<3;i++) setTimeout(()=>spawnPetals(DATA[i*2].color),i*200);
+  setTimeout(()=>{
+    document.getElementById('finale').classList.add('show');
+    try{ startConstellation(); }catch(e){ console.warn('constellation error',e); }
+    for(let i=0;i<6;i++) setTimeout(()=>spawnPetals(DATA[i].color),i*350);
+    for(let i=0;i<8;i++) setTimeout(()=>sparkBurst(DATA[i%6].color),i*250);
+  },400);
+}
+
+function startConstellation(){
+  const canvas=document.getElementById('const-canvas');
+  if(!canvas) return;
+  canvas.width=window.innerWidth;
+  canvas.height=window.innerHeight;
+  const ctx=canvas.getContext('2d');
+  const W=canvas.width, H=canvas.height;
+
+  // scale so constellation fits any screen comfortably
+  const sc=Math.min(W/820, H/320, 1.2);
+  const ox=W/2, oy=H*0.26;
+
+  // SNEHAL — indexed star coords (relative to center)
+  const raw=[
+    // S (0–7)
+    [-195,-50],[-178,-72],[-158,-60],[-170,-30],[-152,-18],[-162,10],[-180,22],[-198,10],
+    // N (8–12)
+    [-128,-72],[-128,18],[-100,-20],[-72,-72],[-72,18],
+    // E (13–17)
+    [-44,-72],[-44,18],[-16,-72],[-16,-22],[-16,18],
+    // H (18–22)
+    [12,-72],[12,18],[38,-22],[64,-72],[64,18],
+    // A (23–26)
+    [92,18],[114,-72],[136,18],[114,-16],
+    // L (27–30)
+    [164,-72],[164,18],[194,18],[222,18],
+  ];
+  const pts=raw.map(([x,y])=>({x:ox+x*sc, y:oy+y*sc}));
+
+  // which letter (0–5) each point belongs to
+  const grp=[0,0,0,0,0,0,0,0, 1,1,1,1,1, 2,2,2,2,2, 3,3,3,3,3, 4,4,4,4, 5,5,5,5];
+
+  const lines=[
+    // S
+    [0,1],[1,2],[0,3],[2,3],[3,4],[4,5],[5,6],[6,7],[5,7],
+    // N
+    [8,9],[8,10],[10,11],[11,12],
+    // E
+    [13,14],[13,15],[16,17],[13,17],[14,17],
+    // H
+    [18,19],[18,20],[20,21],[21,22],[19,22],
+    // A
+    [23,24],[24,25],[25,26],[24,26],
+    // L
+    [27,28],[28,29],[29,30],
+  ];
+
+  const colors=DATA.map(d=>d.color);
+
+  // background twinkling stars
+  const bg=Array.from({length:280},()=>({
+    x:Math.random()*W, y:Math.random()*H,
+    r:0.15+Math.random()*1.1,
+    o:0.06+Math.random()*0.4,
+    sp:0.4+Math.random()*2.8, ph:Math.random()*Math.PI*2
+  }));
+
+  let prog=0;
+  function draw(t){
+    ctx.clearRect(0,0,W,H);
+
+    // bg stars
+    bg.forEach(s=>{
+      const op=Math.max(0,s.o*(0.3+0.7*Math.sin(t*0.001*s.sp+s.ph)));
+      ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(255,255,255,${op.toFixed(3)})`; ctx.fill();
+    });
+
+    // lines (draw first, under stars)
+    const nLines=Math.floor(prog*lines.length);
+    lines.slice(0,nLines).forEach(([a,b])=>{
+      const pa=pts[a], pb=pts[b]; if(!pa||!pb) return;
+      const ca=colors[grp[a]||0], cb=colors[grp[b]||0];
+      const g=ctx.createLinearGradient(pa.x,pa.y,pb.x,pb.y);
+      g.addColorStop(0,ca+'66'); g.addColorStop(1,cb+'33');
+      ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y);
+      ctx.strokeStyle=g; ctx.lineWidth=1.2; ctx.stroke();
+    });
+
+    // constellation star glows
+    const nStars=Math.floor(prog*pts.length);
+    pts.slice(0,nStars).forEach((p,i)=>{
+      const col=colors[grp[i]||0];
+      const pulse=0.55+0.45*Math.sin(t*0.0022+i*1.1);
+      const r=Math.max(3, 8*pulse*Math.max(sc,0.6));
+      const gr=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,r*2);
+      gr.addColorStop(0,col+'cc'); gr.addColorStop(0.5,col+'44'); gr.addColorStop(1,'transparent');
+      ctx.beginPath(); ctx.arc(p.x,p.y,r*2,0,Math.PI*2);
+      ctx.fillStyle=gr; ctx.fill();
+      // bright core
+      ctx.beginPath(); ctx.arc(p.x,p.y,1.6,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,255,255,0.95)'; ctx.fill();
+    });
+
+    if(prog<1) prog=Math.min(1,prog+0.005);
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+}
+</script>
+</body>
+</html>
+
+
